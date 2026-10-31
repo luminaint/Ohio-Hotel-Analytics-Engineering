@@ -1,6 +1,6 @@
 # Business Questions and Findings
 
-*Hotel booking analysis: 736,272 bookings with arrival dates from July 2015 to August 2017. Revenue means room revenue (nightly rate × nights) and is shown in dollars, as labeled in the analysis.*
+*Hotel booking analysis: 2,500 bookings with arrival dates from 1 January 2024 to 25 October 2026. Revenue means room revenue (nightly rate × nights) and is shown in dollars. With 2,500 bookings, differences between small groups (fewer than about 150 bookings) may be due to chance; no statistical significance tests were run.*
 
 ---
 
@@ -14,21 +14,21 @@ We counted how many bookings were canceled and added up the room revenue those b
 
 | KPI | Value |
 |---|---|
-| Bookings | 736,272 |
-| Cancellation rate | **36.5%** |
-| Room revenue earned (guests who stayed) | **\$162,958,621** |
-| Room revenue lost to cancellations | **\$103,237,503** |
-| Share of all booked room revenue lost | **38.8%** |
-| Of that, from "Non Refund" bookings (the hotel keeps the deposit) | \$20,294,830 |
-| **Realistic loss** (excluding Non Refund bookings) | **about \$82,942,673** |
+| Bookings | 2,500 |
+| Cancellation rate | **16.0%** |
+| Room revenue earned (guests who stayed) | **\$553,938** |
+| Room revenue lost to cancellations | **\$104,640** |
+| Share of all booked room revenue lost | **15.9%** |
+| Of that, from "Non Refund" bookings (the hotel keeps the deposit) | \$1,278 |
+| **Realistic loss** (excluding Non Refund bookings) | **about \$103,362** |
 
 **What we learned**
 
-More than 1 in 3 bookings is canceled. Those cancellations represent almost 4 of every 10 dollars of booked room revenue. Because non-refundable deposits are kept by the hotel, the true exposure is closer to \$83M than \$103M. Even that figure is an upper limit: it assumes every canceled room stayed empty, and some were probably resold.
+About 1 in 6 bookings is canceled, and those cancellations represent about 16 of every 100 dollars of booked room revenue. Almost none of the loss is covered by non-refundable deposits, so nearly all of the \$104,640 is a real loss. Even so, this is an upper limit: it assumes every canceled room stayed empty, and some were probably resold.
 
 **Business takeaway**
 
-Cancellations are the single largest revenue problem in this data, and reducing them is worth tens of millions of dollars in booked revenue.
+Cancellations cost the hotel roughly one-sixth of its booked room revenue, and almost none of that is protected by a deposit.
 
 ---
 
@@ -44,21 +44,22 @@ We compared each market segment (how the booking came in) on cancellation rate a
 
 | Market segment | Bookings | Cancellation rate | Revenue lost |
 |---|---|---|---|
-| Online Travel Agent (booking websites) | 354,953 | 37.1% | \$65.0M |
-| Groups | 116,301 | **59.4%** | \$16.0M |
-| Offline Travel Agent / Tour Operator | 146,993 | 33.1% | \$14.7M |
-| Direct (hotel website or phone) | 78,969 | 15.5% | \$6.2M |
-| Corporate | 32,883 | 18.0% | \$1.2M |
+| Online Travel Agent (booking websites) | 938 | **20.7%** | **\$55,676** |
+| Direct (hotel website or phone) | 890 | 10.9% | \$28,492 |
+| Groups | 147 | **29.9%** | \$8,270 |
+| Corporate | 334 | 11.1% | \$8,192 |
+| Offline Travel Agent / Tour Operator | 133 | 15.0% | \$3,941 |
+| Complementary | 58 | 12.1% | \$68 |
 
 **What we learned**
 
-- **Online Travel Agents cause 63% of all lost revenue.** Their cancellation rate (37.1%) is close to average; the loss is large because they bring almost half of all bookings.
-- **Groups are the least reliable segment.** They cancel 59.4% of the time and lose more revenue (\$16.0M) than they actually bring in (\$11.5M).
-- Direct bookings cancel the least among the large segments (15.5%).
+- **Online Travel Agents cause 53% of all lost revenue.** They bring 38% of bookings but cancel almost twice as often as Direct bookings (20.7% vs 10.9%).
+- **Groups have the highest cancellation rate (29.9%)**, but they are a small segment (147 bookings), so they account for only 8% of lost revenue.
+- Direct and Online Travel Agent bookings arrive in similar numbers (890 vs 938), yet Online Travel Agents lose almost twice as much revenue (\$55,676 vs \$28,492).
 
 **Business takeaway**
 
-Two different problems need two different fixes: booking websites are a volume problem, and group bookings are a reliability problem.
+Booking websites are the main source of lost revenue, because they cancel far more often than guests who book direct.
 
 ---
 
@@ -74,26 +75,25 @@ We plotted each segment's average nightly price against its cancellation rate. W
 
 *Top-left is best: high price, few cancellations.*
 
-| Market segment | Avg nightly price | Cancellation rate | Revenue per booking made |
-|---|---|---|---|
-| Direct | \$116.28 | 15.5% | **\$323.97** |
-| Aviation | \$101.17 | 19.3% | \$290.57 |
-| Online Travel Agent | \$117.83 | 37.1% | \$243.15 |
-| Offline Travel Agent / Tour Operator | \$87.43 | 33.1% | \$241.26 |
-| Corporate | \$69.57 | 18.0% | \$110.22 |
-| Groups | \$79.28 | 59.4% | \$98.99 |
+| Market segment | Bookings | Avg nightly price | Cancellation rate | Revenue per booking made |
+|---|---|---|---|---|
+| Offline Travel Agent / Tour Operator | 133 | \$108.43 | 15.0% | **\$259.65** |
+| Direct | 890 | \$110.41 | 10.9% | \$242.75 |
+| Online Travel Agent | 938 | \$113.40 | 20.7% | \$232.99 |
+| Corporate | 334 | \$87.66 | 11.1% | \$188.19 |
+| Groups | 147 | \$88.74 | 29.9% | \$146.50 |
 
-By distribution channel, Direct bookings cancel 17.5% of the time compared with 40.4% for travel agents and tour operators.
+By distribution channel, Direct bookings cancel 11.0% of the time compared with 21.2% for travel agents and tour operators, but revenue per booking made is almost the same (\$228.34 vs \$225.46).
 
 **What we learned**
 
-Direct and Online Travel Agent bookings are priced almost the same (\$116 vs \$118 per night). But because Direct guests cancel less than half as often, **each Direct booking is worth \$324 compared with \$243, or 33% more.** Looking at nightly price alone would make booking websites look like the best channel; they are not. Groups bring the least value per booking (\$99) because so many cancel.
+Online Travel Agent bookings carry the highest nightly price (\$113.40), but because they cancel twice as often as Direct bookings, each Direct booking ends up worth slightly more (\$242.75 vs \$232.99, about 4% more). Offline Travel Agents show the highest value per booking (\$259.65), but with only 133 bookings that result is not reliable. Groups are worth the least per booking (\$146.50) because of their high cancellation rate and lower price.
 
-The analysis did not include travel agent commissions, so the real gap between Direct and agent bookings is likely larger than shown.
+The analysis did not include travel agent commissions, so the real value of agent bookings is lower than shown.
 
 **Business takeaway**
 
-Direct bookings are the most valuable channel; moving guests toward booking direct raises earned revenue without raising prices.
+Direct bookings match booking websites on value while cancelling half as often, which makes them the more dependable channel.
 
 ---
 
@@ -109,22 +109,20 @@ We grouped bookings by how many days ahead they were made (lead time) and compar
 
 | Booked ahead | Bookings | Cancellation rate | Revenue lost |
 |---|---|---|---|
-| 0-7 days | 121,459 | **9.8%** | \$2.8M |
-| 8-30 days | 119,097 | 27.6% | \$12.8M |
-| 31-90 days | 182,488 | 37.0% | \$26.7M |
-| 91-180 days | 164,194 | 44.1% | \$31.8M |
-| 181-365 days | 130,737 | 54.6% | \$27.1M |
-| More than 365 days | 18,297 | **67.4%** | \$2.0M |
+| 0-7 days | 1,171 | **11.7%** | \$38,939 |
+| 8-30 days | 908 | 17.0% | \$38,785 |
+| 31-90 days | 336 | 22.9% | \$20,527 |
+| 91-180 days | 85 | **36.5%** | \$6,389 |
 
 **What we learned**
 
-Cancellation risk rises at every step. A booking made more than a year ahead is almost 7 times as likely to cancel as one made in the last week. **Bookings made 91 or more days ahead are 42.5% of all bookings but 59% of lost revenue (\$60.9M).** The longer a reservation sits on the calendar, the more time the guest has to change plans or find another deal.
+Cancellation risk rises at every step. A booking made 91 to 180 days ahead is about 3 times as likely to cancel as one made in the last week (36.5% vs 11.7%). Most guests book close to arrival: almost half of all bookings (47%) are made within a week, and the typical (median) booking is made 9 days ahead. **Bookings made 31 or more days ahead are 17% of all bookings but 26% of lost revenue (\$26,916).** No booking in this data was made more than 179 days ahead.
 
-Some of this pattern may come from the type of guest (for example, groups tend to book early). The analysis compared one factor at a time, so it cannot fully separate these effects.
+The 91-180 day group has only 85 bookings, so its exact rate is less certain, but the upward pattern holds across all four groups.
 
 **Business takeaway**
 
-How far ahead someone books is a simple, early warning sign of cancellation risk that the hotel knows at the moment of booking.
+The further ahead a guest books, the more likely they are to cancel, and the hotel knows this at the moment of booking.
 
 ---
 
@@ -132,7 +130,7 @@ How far ahead someone books is a simple, early warning sign of cancellation risk
 
 **What we did**
 
-We compared the average nightly price and the cancellation rate across the same lead-time groups.
+We compared the average nightly price and revenue per booking made across the same lead-time groups.
 
 **Results**
 
@@ -140,20 +138,18 @@ We compared the average nightly price and the cancellation rate across the same 
 
 | Booked ahead | Avg nightly price | Revenue per booking made |
 |---|---|---|
-| 0-7 days | \$91.95 | \$169.48 |
-| 8-30 days | \$108.65 | \$230.93 |
-| 31-90 days | \$107.23 | \$240.26 |
-| 91-180 days | **\$109.32** | **\$259.32** |
-| 181-365 days | \$95.34 | \$204.22 |
-| More than 365 days | \$78.90 | \$95.51 |
+| 0-7 days | \$104.60 | **\$231.72** |
+| 8-30 days | **\$106.22** | \$225.75 |
+| 31-90 days | \$103.05 | \$195.35 |
+| 91-180 days | \$93.67 | \$140.86 |
 
 **What we learned**
 
-Prices are highest for bookings made 91 to 180 days ahead. Even after counting their 44.1% cancellation rate, these bookings are worth the most per booking (\$259). Bookings made more than a year ahead are the opposite: the cheapest (\$79 per night) and the most likely to cancel, so each one is worth only \$96.
+Early bookers pay less, not more. Bookings made 91 to 180 days ahead pay the lowest average price (\$93.67) and are also the most likely to cancel, so each one is worth only \$140.86, about 40% less than a last-minute booking (\$231.72). Bookings made within 30 days are the most valuable.
 
 **Business takeaway**
 
-The 91-180 day window is the hotel's most valuable booking window and should be protected, while very early bookings deserve the strictest terms.
+Far-ahead bookings are both cheaper and less reliable, so they deserve the strictest booking terms.
 
 ---
 
@@ -161,38 +157,38 @@ The 91-180 day window is the hotel's most valuable booking window and should be 
 
 **What we did**
 
-We compared cancellation rates by deposit type, customer type, whether the guest had canceled before, and how many special requests the guest made (for example, a high floor or an extra bed).
+We compared cancellation rates by customer type, whether the guest had canceled before, deposit type, and how many special requests the guest made.
 
 **Results**
 
-![Cancellation rate by number of special requests](images/07_cancel_rate_by_special_requests.png)
-
 | Booking detail | Group | Bookings | Cancellation rate |
 |---|---|---|---|
-| Canceled before? | Yes | 37,952 | **90.9%** |
-| | No | 698,320 | 33.5% |
-| Customer type | Transient (individual) | 553,784 | 40.2% |
-| | Contract | 25,160 | 29.7% |
-| | Transient-Party | 153,698 | 24.7% |
-| | Group | 3,630 | 10.4% |
-| Deposit type | No Deposit | 652,724 | 28.6% |
-| | Refundable | 1,099 | 21.8% |
-| | Non Refund | 82,449 | **99.2%** |
+| Customer type | Group | 147 | **29.9%** |
+| | Transient (individual) | 1,979 | 15.7% |
+| | Transient-Party | 237 | 13.5% |
+| | Contract | 137 | 8.8% |
+| Canceled before? | Yes | 141 | **22.0%** |
+| | No | 2,359 | 15.6% |
+| Deposit type | No Deposit | 2,357 | 16.5% |
+| | Refundable | 47 | 8.5% |
+| | Non Refund | 96 | 5.2% |
 
-| Special requests | 0 | 1 | 2 | 3 | 4 | 5 |
-|---|---|---|---|---|---|---|
-| Cancellation rate | 46.8% | 22.3% | 22.4% | 18.3% | 10.8% | 5.6% |
+![Cancellation rate by number of special requests](images/07_cancel_rate_by_special_requests.png)
+
+| Special requests | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| Cancellation rate | 16.0% | 16.6% | 13.6% | 15.4% |
 
 **What we learned**
 
-- **Past behavior is the strongest signal.** Guests who canceled before cancel again 90.9% of the time.
-- **Guests who make special requests rarely cancel.** Bookings with no requests cancel 46.8% of the time; with 5 requests, only 5.6%. This shows commitment, not cause: asking guests for requests will not by itself stop them from canceling.
-- **Almost all of the realistic loss (99.8%) comes from "No Deposit" bookings.**
-- **The Non Refund result does not make sense as-is.** Non-refundable bookings should cancel the least, but the data shows 99.2%. This may reflect how the booking system records these reservations and needs to be checked with whoever owns the data before it is used for any decision.
+- **Group bookings cancel the most (29.9%)**, more than three times the rate of Contract guests (8.8%).
+- **Guests who canceled before are more likely to cancel again** (22.0% vs 15.6%), but they are only 6% of bookings.
+- **Deposits line up with fewer cancellations.** Non-refundable bookings cancel 5.2% of the time and refundable ones 8.5%, compared with 16.5% for bookings with no deposit. Bookings with no deposit make up 94% of bookings and **99% of the realistic loss**. The deposit groups are small (96 and 47 bookings), and this shows a link, not proof that a deposit causes guests to cancel less.
+- **Special requests do not predict cancellations here.** Rates stay between 13.6% and 16.6% whatever the number of requests.
 
 **Business takeaway**
 
-A past cancellation, no deposit, and no special requests are practical warning signs the hotel can see at booking time; the Non Refund data needs to be verified first.
+Group bookings, repeat cancelers and bookings with no deposit are the clearest warning signs; special requests are not.
 
 ---
 
@@ -200,38 +196,39 @@ A past cancellation, no deposit, and no special requests are practical warning s
 
 **What we did**
 
-We compared guest arrivals and average nightly price by month. Because the data starts in July 2015 and ends in August 2017, July and August appear in three years while other months appear in two. We divided each month's arrivals by its number of years so every month is compared fairly.
+We compared guest arrivals and average nightly price by month. The data covers January 2024 to October 2026, so January to October appear in three years and November and December in two. We divided each month's arrivals by its number of years so every month is compared fairly.
 
 **Results**
 
 ![Demand vs. price by month](images/05_demand_vs_price_by_month.png)
 
-| Month | Arrivals per year | Avg nightly price | Revenue per year |
-|---|---|---|---|
-| January | 12,894 | \$71.13 | \$2.48M |
-| February | 16,574 | \$74.28 | \$3.62M |
-| March | 20,734 | \$81.52 | \$5.17M |
-| April | 21,047 | \$100.48 | \$6.74M |
-| **May** | **22,105** | \$109.09 | \$7.46M |
-| June | 20,177 | \$117.30 | \$8.16M |
-| July | 16,382 | \$127.83 | \$8.56M |
-| **August** | 17,820 | **\$141.35** | **\$10.14M** |
-| September | 20,026 | \$105.54 | \$7.44M |
-| October | 21,107 | \$88.84 | \$5.75M |
-| November | 14,479 | \$73.78 | \$3.23M |
-| December | 13,471 | \$81.76 | \$3.37M |
+| Month | Arrivals per year | Avg nightly price | Cancellation rate | Revenue per year |
+|---|---|---|---|---|
+| January | **42** | \$83.83 | 18.2% | **\$8,850** |
+| February | 47 | **\$82.28** | 14.0% | \$11,532 |
+| March | 55 | \$93.28 | 18.4% | \$12,547 |
+| April | 57 | \$97.55 | 15.4% | \$13,838 |
+| May | 64 | \$105.96 | 13.6% | \$17,934 |
+| June | 81 | \$118.75 | 15.6% | \$23,651 |
+| July | 85 | \$121.41 | 15.3% | \$24,911 |
+| **August** | **87** | **\$121.67** | 13.3% | **\$25,721** |
+| September | 66 | \$102.17 | 16.4% | \$15,918 |
+| October | 59 | \$105.39 | 17.3% | \$16,009 |
+| November | 44 | \$92.00 | 17.1% | \$10,885 |
+| December | 44 | \$84.38 | **22.3%** | \$9,717 |
 
 **What we learned**
 
-- **May is the busiest month, but August is the most expensive.** May has 24% more arrivals than August at a 23% lower price (\$109 vs \$141). Without the fair-comparison adjustment, raw totals would have wrongly named August the busiest month.
-- **October is almost as busy as May (21,107 arrivals per year) but charges only \$89 per night.**
-- November to February are the quiet, low-price months.
+- **Summer is the peak.** June to August bring the most arrivals and the highest prices; August leads on both (87 arrivals per year at \$121.67).
+- **Prices already follow demand.** The months with more guests are the months with higher prices, so there is no obvious underpriced busy month.
+- **Winter is the low season.** January has half of August's arrivals and earns about a third of August's revenue (\$8,850 vs \$25,721 per year). February has the lowest price (\$82.28).
+- **December has the highest cancellation rate (22.3%).**
 
-Prices follow the summer holiday calendar rather than the actual number of guests arriving. The data does not include room capacity or occupancy, so it cannot show whether the hotel is full in May or October.
+October 2026 is only partly in the data (it ends on 25 October), so October's figures are slightly understated.
 
 **Business takeaway**
 
-Spring and autumn may be underpriced compared with how busy they are, which is worth testing carefully.
+The hotel's pricing already tracks the summer peak; the opportunity is in filling the November to March low season.
 
 ---
 
@@ -247,18 +244,18 @@ For guests who actually stayed, we compared average length of stay, nightly pric
 
 | Customer type | Stays | Avg nights | Avg nightly price | Revenue per stay |
 |---|---|---|---|---|
-| Contract | 17,688 | **6.26** | \$92.46 | **\$536.28** |
-| Transient (individual) | 331,209 | 3.38 | \$105.89 | \$366.60 |
-| Transient-Party | 115,683 | 3.08 | \$88.68 | \$270.97 |
-| Group | 3,253 | 2.71 | \$80.70 | \$217.14 |
+| Transient (individual) | 1,668 | 2.57 | \$106.90 | **\$272.56** |
+| Transient-Party | 205 | 2.40 | \$107.25 | \$258.48 |
+| Group | 103 | 2.39 | \$89.87 | \$209.08 |
+| Contract | 125 | 2.28 | \$87.81 | \$198.22 |
 
 **What we learned**
 
-Contract guests pay less per night than individual guests (\$92 vs \$106) but stay almost twice as long (6.3 vs 3.4 nights), so each stay brings in 46% more revenue (\$536 vs \$367). Group guests have the shortest stays and the lowest revenue per stay.
+Individual (Transient) guests are the hotel's main business, with 1,668 of 2,101 completed stays, and they bring the most revenue per stay (\$272.56). That is 38% more than Contract guests (\$198.22), who pay the lowest nightly price. Stay lengths are similar across all types (2.3 to 2.6 nights), so the difference comes mostly from price.
 
 **Business takeaway**
 
-Length of stay matters as much as nightly price, so longer stays are worth encouraging.
+Individual guests are both the largest and the most valuable group per stay.
 
 ---
 
@@ -272,16 +269,16 @@ We compared returning guests with first-time guests on share of bookings, cancel
 
 | Guest type | Share of bookings | Cancellation rate | Avg nightly price | Revenue per booking made |
 |---|---|---|---|---|
-| First-time | 97.0% | 37.1% | \$103.58 | \$223.78 |
-| Repeat | 3.0% | **14.8%** | \$70.10 | \$141.00 |
+| First-time | 90.7% | 16.3% | \$105.19 | \$223.77 |
+| Repeat | 9.3% | **12.9%** | \$98.95 | \$200.10 |
 
 **What we learned**
 
-Repeat guests are far more reliable: they cancel 14.8% of the time compared with 37.1% for new guests. But they are only 3% of bookings and currently pay much less per night (\$70 vs \$104), so each repeat booking brings in 37% less revenue. The data does not include marketing or customer acquisition costs, so it cannot show whether keeping a repeat guest is cheaper than winning a new one.
+Repeat guests are about 1 in 11 bookings. They cancel a little less often than new guests (12.9% vs 16.3%) but pay about \$6 less per night, so each repeat booking brings in about 11% less revenue. The data does not include marketing or customer acquisition costs, so it cannot show whether keeping a repeat guest is cheaper than winning a new one.
 
 **Business takeaway**
 
-Repeat guests are dependable but not currently more profitable, so any loyalty effort should reward reliability without deepening discounts.
+Repeat guests are slightly more reliable but not currently more valuable per booking.
 
 ---
 
@@ -293,25 +290,24 @@ We counted guests (adults, children and babies) on bookings that were not cancel
 
 **Results**
 
-![Number of guests by country](images/01_guests_by_country_map.png)
+![Top countries by number of guests](images/02_top10_countries_guests.png)
 
-![Top 10 countries by number of guests](images/02_top10_countries_guests.png)
-
-| Country | Guests |
-|---|---|
-| Portugal | 236,183 |
-| United Kingdom | 122,037 |
-| France | 109,630 |
-| Spain | 82,147 |
-| Germany | 72,444 |
+| Country | Guests | Share |
+|---|---|---|
+| United States | 3,688 | **90%** |
+| Canada | 187 | 5% |
+| Mexico | 61 | 1% |
+| India | 58 | 1% |
+| United Kingdom | 56 | 1% |
+| Germany | 33 | 1% |
 
 **What we learned**
 
-Guests come mainly from Western Europe. Portugal alone supplies about a quarter of all guests, and the top 10 countries account for 82% of the 918,502 guests counted.
+The hotel is almost entirely a domestic business: 9 in 10 guests come from the United States, and only six countries appear among guests who stayed. Canada is a distant second at 5%.
 
 **Business takeaway**
 
-The hotel's demand is concentrated in a handful of European markets, which is where marketing attention matters most.
+Marketing and pricing decisions should be built around U.S. travelers, who make up nearly all of the demand.
 
 ---
 
@@ -319,28 +315,21 @@ The hotel's demand is concentrated in a handful of European markets, which is wh
 
 **What we did**
 
-For countries with at least 1,000 bookings, we compared revenue earned, revenue lost, cancellation rate and revenue per booking made.
+The analysis compared revenue and cancellation rates for countries with at least 1,000 bookings, so that small countries would not produce misleading rates.
 
 **Results**
 
-![Top 15 countries: revenue vs. cancellation rate](images/09_top15_countries_revenue_vs_cancel.png)
-
 | Country | Bookings | Cancellation rate | Revenue earned | Revenue lost | Revenue per booking made |
 |---|---|---|---|---|---|
-| Portugal | 290,837 | **55.9%** | \$34.4M | **\$51.4M** | \$118.14 |
-| United Kingdom | 76,338 | 19.9% | \$26.1M | \$7.4M | \$341.59 |
-| France | 65,880 | 18.7% | \$19.6M | \$6.0M | \$296.94 |
-| Spain | 53,387 | 25.7% | \$14.1M | \$6.7M | \$263.26 |
-| Germany | 44,983 | 16.4% | \$12.7M | \$3.4M | \$283.31 |
-| Ireland | 21,061 | 24.8% | \$7.7M | \$2.5M | \$366.61 |
+| United States | 2,252 | 15.9% | \$499,858 | \$90,881 | \$221.96 |
 
 **What we learned**
 
-Portugal earns the hotel the most revenue, but it loses even more: \$51.4M lost against \$34.4M earned, with more than half of bookings canceled. Portugal makes up 39.5% of bookings and about half of all lost revenue. Guests from the UK, France, Germany and Ireland cancel only 16-25% of the time and are worth \$283 to \$367 per booking, two to three times as much as a Portuguese booking.
+Only the United States meets the 1,000-booking threshold, so **this question cannot be answered with the current data**: there is no second country to compare against. The U.S. results simply mirror the hotel overall (15.9% cancellation vs 16.0%). Comparing countries would need a lower threshold, which would mean comparing groups of fewer than 250 bookings, or more international data.
 
 **Business takeaway**
 
-The largest market is also the least reliable, while several international markets are smaller but far more valuable per booking.
+Country is not a useful way to segment this hotel's guests yet.
 
 ---
 
@@ -352,26 +341,26 @@ We looked at how often guests ended up in a different room type than they reserv
 
 **Results**
 
-| Booking detail | Group | Bookings | Avg nightly price | Revenue per booking made |
-|---|---|---|---|---|
-| Room type changed | Yes (12.5% of bookings) | 91,919 | \$85.74 | \$226.85 |
-| | No | 644,353 | \$104.99 | \$220.54 |
-| Meal plan | Half board | 89,030 | **\$121.26** | **\$349.30** |
-| | Bed and breakfast | 569,335 | \$100.10 | \$206.17 |
-| | Self catering | 66,255 | \$99.41 | \$161.16 |
-| | Full board | 4,800 | \$109.89 | \$311.87 |
-| Parking requested | 1 space | 47,088 | \$112.80 | \$381.69 |
-| | None | 688,990 | \$101.89 | \$210.30 |
+| Booking detail | Group | Bookings | Cancellation rate | Avg nightly price | Revenue per booking made |
+|---|---|---|---|---|---|
+| Room type changed | Yes (0.9% of bookings) | 23 | 4.3% | \$135.95 | \$485.09 |
+| | No | 2,477 | 16.1% | \$104.32 | \$219.13 |
+| Meal plan | Self catering | 1,335 | 16.4% | \$104.33 | \$218.59 |
+| | Bed and breakfast | 1,087 | 15.7% | \$105.19 | \$224.71 |
+| Parking requested | 1 space | 1,699 | 15.7% | \$104.42 | \$226.72 |
+| | None | 676 | 16.6% | \$104.86 | \$212.83 |
+| | 2 spaces | 125 | 16.0% | \$105.87 | \$198.98 |
 
 **What we learned**
 
-- **About 1 in 8 guests (12.5%) already end up in a different room type.** That is a regular, existing opportunity to offer a paid upgrade.
-- **Half-board guests pay more per night (\$121 vs \$100) and are worth \$349 per booking, compared with \$206 for bed and breakfast.**
-- Room changes and parking requests show very low cancellation rates, but this is misleading: room types are assigned at check-in, and parking needs are probably recorded at arrival too, so only guests who show up can have them. These details do not prevent cancellations, and the parking revenue figure should not be read as the value of a parking package.
+- **Room changes are rare.** Only 23 bookings (0.9%) ended up in a different room type. Those guests paid more (\$135.95 per night), but the group is too small to size an upgrade program.
+- **Meal plans barely differ.** Guests choose only self catering (53%) or bed and breakfast; there is no half-board or full-board option in the data, and the two plans are worth almost the same per booking (\$218.59 vs \$224.71).
+- **Most guests want parking.** 68% of bookings request one parking space, and these bookings are worth slightly more per booking than those without parking (\$226.72 vs \$212.83).
+- The data does not record meal or parking revenue, so the value of any add-on cannot be measured directly.
 
 **Business takeaway**
 
-Room upgrades and half-board meal plans are the clearest add-on sales opportunities supported by the data.
+The data does not show a strong add-on opportunity yet; parking is in high demand, but its value cannot be measured without parking revenue data.
 
 ---
 
@@ -379,65 +368,50 @@ Room upgrades and half-board meal plans are the clearest add-on sales opportunit
 
 These are **proposed actions** based on the findings above. None has been tested, so every benefit below is expected, not proven.
 
-**1. Ask for a partial deposit on bookings made 90+ days ahead, and send a reconfirmation email about 30 days before arrival.**
+**1. Ask for a partial deposit, or send a reconfirmation email, for bookings made 31 or more days ahead.**
 
-- **Evidence:** Cancellation rates rise from 9.8% to 67.4% with lead time; 91+ day bookings carry 59% of lost revenue (Question 4); 99.8% of the realistic loss comes from No Deposit bookings (Question 6).
-- **Business value:** Expected to reduce late cancellations and free up rooms earlier for resale.
-- **Success metric:** Cancellation rate and lost revenue for 91+ day bookings, plus booking volume in that window.
-- **Priority:** High. Test it first on a sample of bookings, because the 91-180 day window is also the most valuable (Question 5) and a deposit could discourage some of those guests.
+- **Evidence:** Cancellation rates rise from 11.7% to 36.5% with lead time; bookings made 31+ days ahead are 17% of bookings but 26% of lost revenue (Question 4). Far-ahead bookings are also the cheapest (Question 5). Bookings with no deposit carry 99% of the realistic loss, while deposit bookings cancel less (Question 6).
+- **Business value:** Expected to reduce cancellations in the riskiest window and release rooms earlier for resale, while leaving last-minute guests (47% of bookings) untouched.
+- **Success metric:** Cancellation rate and lost revenue for bookings made 31+ days ahead, plus booking volume in that window.
+- **Priority:** High. Test it on a sample first, because a deposit could discourage some early bookers.
 
-**2. Verify the "Non Refund" data with the data owner before changing any deposit policy.**
+**2. Negotiate stricter cancellation terms with online travel agents.**
 
-- **Evidence:** Non-refundable bookings show a 99.2% cancellation rate, the opposite of what is expected (Question 6).
-- **Business value:** Prevents deposit decisions from being built on a recording error.
-- **Success metric:** A confirmed explanation of how Non Refund bookings are recorded.
-- **Priority:** High. Quick to do and needed before Recommendation 1 is finalized.
+- **Evidence:** Online travel agent bookings cancel 20.7% of the time, about twice the Direct rate (10.9%), and cause 53% of lost revenue (Question 2).
+- **Business value:** Expected to reduce the largest single source of lost revenue.
+- **Success metric:** Online travel agent cancellation rate and lost revenue.
+- **Priority:** High. Stricter terms could reduce the hotel's visibility on booking websites, so watch booking volume from that channel.
 
-**3. Tighten terms for group bookings and online travel agents.**
+**3. Encourage guests to book direct.**
 
-- **Evidence:** Groups cancel 59.4% of the time and lose more revenue than they earn; online travel agents cause 63% of lost revenue (Question 2).
-- **Business value:** Expected to reduce lost revenue from the two largest sources. Options include releasing unconfirmed group room blocks earlier and negotiating stricter cancellation windows with booking websites.
-- **Success metric:** Group pickup rate (rooms used vs. rooms blocked) and online travel agent cancellation rate.
-- **Priority:** High. Stricter terms could reduce group demand or visibility on booking websites, so changes should be monitored closely.
+- **Evidence:** Direct bookings cancel half as often as online travel agent bookings and are worth slightly more per booking made (\$242.75 vs \$232.99), before counting agent commissions (Question 3).
+- **Business value:** Expected to lower cancellations and commission costs without raising prices. Examples include a best-price guarantee or small perks for booking on the hotel's website.
+- **Success metric:** Direct share of bookings and the overall cancellation rate.
+- **Priority:** Medium. The revenue difference per booking is small; most of the benefit comes from fewer cancellations and avoided commissions, which were not measured.
 
-**4. Encourage guests to book direct.**
+**4. Release unconfirmed group room blocks earlier.**
 
-- **Evidence:** Direct bookings are worth \$324 per booking made versus \$243 for online travel agents, at nearly the same nightly price (Question 3).
-- **Business value:** Expected to raise revenue per booking without raising prices. Examples include a best-price guarantee or small perks for booking on the hotel's website.
-- **Success metric:** Direct share of bookings and revenue per booking made.
-- **Priority:** High. Guests who switch channels may not behave exactly like today's direct bookers, so track their cancellation rate.
+- **Evidence:** Group bookings cancel 29.9% of the time, the highest of any segment, and are worth the least per booking (\$146.50) (Questions 2, 3 and 6).
+- **Business value:** Expected to free up rooms for other guests sooner.
+- **Success metric:** Group pickup rate (rooms used vs. rooms blocked) and group cancellation rate.
+- **Priority:** Medium. Groups are only 6% of bookings and 8% of lost revenue.
 
-**5. Require a deposit from guests who have canceled before.**
+**5. Run low-season promotions from November to March.**
 
-- **Evidence:** These guests cancel 90.9% of the time versus 33.5% for others (Question 6).
-- **Business value:** Expected to reduce cancellations in a small, high-risk group (about 5% of bookings).
+- **Evidence:** January has half of August's arrivals and about a third of its revenue; December has the highest cancellation rate (22.3%) (Question 7).
+- **Business value:** Expected to raise occupancy in the slowest months. Summer pricing already follows demand, so no price increase is recommended.
+- **Success metric:** Arrivals and revenue per month for November to March, compared with prior years.
+- **Priority:** Medium. Room capacity and occupancy were not in the data, so the size of the opportunity cannot be measured.
+
+**6. Require a deposit from guests who have canceled before.**
+
+- **Evidence:** These guests cancel 22.0% of the time versus 15.6% for others (Question 6).
+- **Business value:** Expected to reduce cancellations in a small, higher-risk group (about 6% of bookings).
 - **Success metric:** Cancellation rate for flagged guests.
-- **Priority:** Medium. Simple rule, but it only applies to guests the hotel can identify.
+- **Priority:** Low. The difference is modest and the group is small.
 
-**6. Test higher prices in April, May, September and October, and use promotions from November to February.**
+**What the data cannot support yet**
 
-- **Evidence:** May is the busiest month but priced 23% below August; October is nearly as busy at \$89 per night (Question 7).
-- **Business value:** Expected to raise the average nightly price in busy shoulder months.
-- **Success metric:** Average nightly price, arrivals and revenue by month.
-- **Priority:** Medium. Room capacity, occupancy and competitor prices were not in the data, so increases should be small and tested.
-
-**7. Offer paid room upgrades and half-board meal bundles at booking.**
-
-- **Evidence:** 12.5% of guests already get a different room type; half-board bookings are worth \$349 versus \$206 for bed and breakfast (Question 12).
-- **Business value:** Expected to add revenue beyond the room rate.
-- **Success metric:** Upgrade sales and the share of bookings on half board.
-- **Priority:** Medium. Meal revenue itself was not in the data, so the full value of bundles cannot be measured yet.
-
-**8. Build a loyalty program that rewards reliability rather than offering deeper discounts.**
-
-- **Evidence:** Repeat guests cancel 14.8% of the time versus 37.1%, but already pay \$70 per night versus \$104 (Question 9).
-- **Business value:** Expected to grow a more reliable guest base. The cost advantage of keeping a guest is assumed, not measured.
-- **Success metric:** Repeat-guest share of bookings, their cancellation rate and their nightly price.
-- **Priority:** Low. Repeat guests are only 3% of bookings and currently bring less revenue per booking.
-
-**9. Use cancellation patterns to plan overbooking on high-demand dates.**
-
-- **Evidence:** Cancellation rates differ in a consistent way by channel and lead time (Questions 2 and 4).
-- **Business value:** Could reduce empty rooms caused by late cancellations.
-- **Success metric:** Occupancy on peak dates and the number of guests who must be moved to another hotel.
-- **Priority:** Low until more data is available. The analysis did not model overbooking. Room capacity data and a booking-level cancellation forecast are needed before setting overbooking levels.
+- **Add-on and upgrade programs:** Room changes are too rare (23 bookings) and meal or parking revenue is not recorded (Question 12). Collecting ancillary revenue data would be needed first.
+- **A loyalty program:** Repeat guests cancel slightly less but bring about 11% less revenue per booking, and acquisition costs are unknown (Question 9).
+- **Country-based targeting:** Only the United States has enough bookings to analyze (Question 11).
